@@ -1,0 +1,3 @@
+# Android-specific build files
+# Run 'flutter create --platforms=android .' to generate proper structure
+
