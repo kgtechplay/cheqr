@@ -1,5 +1,5 @@
-import search_results
-import break_statement
+from . import search_results
+from . import break_statement
 
 def check_statement(statement: str) -> bool:
     questions, num_questions = break_statement.decompose_statement_to_questions(statement)
@@ -9,4 +9,4 @@ def check_statement(statement: str) -> bool:
     return True
 
 if __name__ == "__main__":
-    print(check_statement("Virat Kohli is the 21st Prime Minister of India"))
+    print(check_statement("Sachin scored 100 in his last test match"))
