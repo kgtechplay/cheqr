@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import sys
 import os
 
-from backend.checker import check_statement
+from .checker import check_statement
 
 app = FastAPI()
 
@@ -22,8 +22,8 @@ class Statement(BaseModel):
 
 @app.post("/check")
 def check_text(statement: Statement):
-    result = check_statement(statement.text)
-    return {"result": result}
+    result, verdict = check_statement(statement.text)
+    return {"result": result, "verdict": verdict}
 
 @app.get("/")
 def root():

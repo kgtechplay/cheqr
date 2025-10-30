@@ -13,7 +13,7 @@ class ApiService {
     }
   }
 
-  static Future<bool> checkStatement(String text) async {
+  static Future<Map<String, dynamic>> checkStatement(String text) async {
     final url = Uri.parse('$baseUrl/check');
     final response = await http.post(
       url,
@@ -23,7 +23,10 @@ class ApiService {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      return data['result'] as bool;
+      return {
+        'result': data['result'] as List, // List of [question, answer] tuples
+        'verdict': data['verdict'] as bool,
+      };
     } else {
       throw Exception('Failed to get response from backend: ${response.statusCode}');
     }
